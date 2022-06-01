@@ -1,0 +1,111 @@
+.navHeader {
+  position: fixed;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+  .logoWeb {
+    height: 70px;
+  }
+  .navLinks {
+    display: flex;
+    align-items: center;
+    .authBtn {
+      background: transparent;
+      color: #fff;
+      border: none;
+      width: 161px;
+      height: 46px;
+      font-weight: 400;
+      font-size: 20px;
+      margin-right: 40px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+  }
+}
+.banner {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e7e7e7;
+  font-size: 110px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  user-select: none;
+}
+.bannerInfo {
+  color: #e7e7e7;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 40px;
+}
+.actionBtn {
+  cursor: pointer;
+}
+.actionBtnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  > div {
+    margin: 0 20px;
+  }
+}
+.optionBtn {
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  display: inline-block;
+  transform: skewX(20deg);
+  border: 1px solid #fff;
+  border-top: 1px solid transparent;
+  padding: 15px 30px;
+  user-select: none;
+
+  .btnText {
+    -ms-transform: skewX(-20deg); /* IE 9 */
+    -webkit-transform: skewX(-20deg); /* Safari */
+    transform: skewX(-20deg);
+  }
+}
+
+.logoMob {
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .banner {
+    font-size: 20px !important;
+    height: 30vh !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .authBtn {
+    display: none !important;
+  }
+  .homeWrapper {
+    background-image: url("../../assets/images/mobileStartBg.png") !important;
+    .logoWeb {
+      display: none !important;
+    }
+    .logoMob {
+      display: block !important;
+      height: 64px;
+      margin-bottom: 20px;
+    }
+  }
+  .actionBtnWrapper {
+    flex-direction: column;
+    .optionBtn {
+      margin: 20px 0 !important;
+      width: 180px !important;
+      padding: 15px !important;
+      font-size: 13px !important;
+    }
+  }
+}

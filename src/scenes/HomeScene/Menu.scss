@@ -1,0 +1,54 @@
+#bar1,
+#bar2,
+#bar3 {
+  width: 35px;
+  height: 3px;
+  margin: 6px 0;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+#menu-wrapper {
+  cursor: pointer;
+}
+
+#menu {
+  height: 0px;
+  width: 0px;
+  position: fixed;
+  left: 50%;
+  top: 100%;
+  background-color: transparent;
+  visibility: hidden;
+  z-index: -10;
+}
+
+.cover {
+  background-color: #fff !important;
+  height: calc(100vh - 75px) !important;
+  width: 100vw !important;
+  left: 0 !important;
+  top: 75px !important;
+  transition: all 0.25s ease-in;
+  visibility: visible !important;
+  z-index: 10 !important;
+}
+
+.scroll-off {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.up {
+  -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mid {
+  opacity: 0;
+}
+
+.low {
+  -webkit-transform: rotate(45deg) translate(-7px, -8px);
+  transform: rotate(45deg) translate(-7px, -8px);
+}
