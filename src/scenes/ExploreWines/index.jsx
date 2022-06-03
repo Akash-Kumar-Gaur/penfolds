@@ -7,6 +7,9 @@ import btnBg from "../../assets/images/btnBg.png";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "./index.module.scss";
 import useCart from "../../customHooks/useCart";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import WineDetails from "./wineDetail";
 
 function ExploreWines({ db }) {
   const WINE_TYPES = [
@@ -140,24 +143,49 @@ function ExploreWines({ db }) {
                   if (type.includes(activeType)) {
                     return (
                       <div key={index} className={styles.cardWrapper}>
-                        <div className={styles.wineCard} id="wineCard">
-                          <div
-                            style={{
-                              height: "299px",
-                              overflow: "hidden",
-                            }}
-                          >
-                            <img
-                              src={imgUrl}
-                              alt={name}
-                              className={`${styles.wineImgMain}  animate__animated animate__bounceInUp`}
+                        <Popup
+                          trigger={
+                            <button
+                              style={{
+                                background: "none",
+                                border: "none",
+                                color: "#fff",
+                              }}
+                            >
+                              <div className={styles.wineCard} id="wineCard">
+                                <div
+                                  style={{
+                                    height: "299px",
+                                    overflow: "hidden",
+                                  }}
+                                >
+                                  <img
+                                    src={imgUrl}
+                                    alt={name}
+                                    className={`${styles.wineImgMain}  animate__animated animate__bounceInUp`}
+                                  />
+                                </div>
+                                <div className={styles.infoWrapper}>
+                                  <div className={styles.wineName}>{name}</div>
+                                  <div className={styles.subtitle}>
+                                    {subtitle}
+                                  </div>
+                                </div>
+                              </div>
+                            </button>
+                          }
+                          modal
+                        >
+                          {(close) => (
+                            <WineDetails
+                              closeModal={close}
+                              wineData={wine}
+                              addToCart={addToCart}
+                              cart={cart}
+                              removeFromCart={removeFromCart}
                             />
-                          </div>
-                          <div className={styles.infoWrapper}>
-                            <div className={styles.wineName}>{name}</div>
-                            <div className={styles.subtitle}>{subtitle}</div>
-                          </div>
-                        </div>
+                          )}
+                        </Popup>
                         <div className={styles.cartBtn}>
                           {cart[name] ? (
                             <div className={styles.addedToCart}>

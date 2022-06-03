@@ -1,0 +1,166 @@
+.detailsModal {
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 2px solid #8b8b8b;
+  padding: 61px;
+  color: #fff;
+  display: flex;
+  position: relative;
+  .closeIcon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+  }
+  .imagesLeft {
+    margin-right: 50px;
+    .activeImg {
+      background-image: url("../../assets/images/redBg.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 413px;
+      width: 363px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > img {
+        height: 377px;
+      }
+    }
+    .thumbImages {
+      display: flex;
+      margin-top: 50px;
+      justify-content: space-around;
+      .thumb {
+        cursor: pointer;
+        width: 93px;
+        height: 93px;
+        border: 1px solid #fff;
+        > img {
+          width: 93px;
+          height: 93px;
+        }
+      }
+    }
+  }
+  .detailsRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .wineName {
+      font-weight: 600;
+      font-size: 33px;
+      text-transform: uppercase;
+      color: #b12535;
+    }
+    .info {
+      margin-top: 30px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 26px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    h4 {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 26px;
+      color: #b12535;
+      margin: 6px 0;
+    }
+    .data {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 26px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 6px;
+    }
+    .cartBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .addBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        cursor: pointer;
+        user-select: none;
+      }
+      .addedToCart {
+        display: flex;
+        height: 56px;
+        align-items: center;
+        user-select: none;
+
+        .updateBtn {
+          width: 30px;
+          text-align: center;
+          margin: 0 20px;
+          cursor: pointer;
+          user-select: none;
+          font-weight: 400;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .detailsModal {
+    padding: 15px !important;
+    flex-direction: column;
+    .closeIcon {
+      > img {
+        width: 37.7px !important;
+        height: 34px !important;
+      }
+    }
+    .imagesLeft {
+      margin-right: 0 !important;
+      .activeImg {
+        background: none !important;
+        width: auto !important;
+        height: auto !important;
+
+        > img {
+          height: 224px !important;
+        }
+      }
+      .thumbImages {
+        margin-top: 20px !important;
+      }
+    }
+    .detailsRight {
+      margin-top: 30px;
+      .details {
+        height: 300px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+      }
+      .wineName {
+        font-size: 18px !important;
+      }
+      .info {
+        font-size: 15px !important;
+        margin-top: 10px !important;
+      }
+      h4 {
+        font-size: 18px !important;
+      }
+      .data {
+        font-size: 15px !important;
+      }
+      .addBtn {
+        width: 103px !important;
+        font-size: 10px !important;
+        height: 30px !important;
+      }
+    }
+  }
+}

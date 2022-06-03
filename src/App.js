@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import ExploreWines from "./scenes/ExploreWines";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
+import "./App.css";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCiOLB5Df8mvf43x-A159cCGAyqu8m5oPk",
