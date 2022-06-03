@@ -55,20 +55,24 @@ function ExploreWines({ db }) {
   const showControls =
     winesList.filter((wine) => wine.type.includes(activeType)).length > 4;
 
-  const { addToCart, cart, removeFromCart } = useCart();
+  const { addToCart, cart, removeFromCart, isCartEmpty } = useCart();
 
-  console.warn("cart", cart);
+  const innerHeight = window.innerHeight;
 
   return (
     <div
+      className={styles.exploreWrapper}
       style={{
         backgroundImage: `url(${exploreBg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        minHeight: "100vh",
         transition: "all ease .8s",
         overflow: "hidden",
         color: "#fff",
+        position: "relative",
+        overflowY: "hidden",
+        maxHeight: innerHeight,
+        minHeight: innerHeight,
       }}
     >
       <Header />
@@ -123,7 +127,13 @@ function ExploreWines({ db }) {
                 <img src={require("../../assets/images/left.png")} />
               </div>
             )}
-            <div className={styles.winelist} ref={listRef}>
+            <div
+              className={styles.winelist}
+              ref={listRef}
+              style={{
+                maxHeight: isCartEmpty ? innerHeight - 191 : innerHeight - 271,
+              }}
+            >
               {!loading &&
                 winesList.map((wine, index) => {
                   const { type, name, subtitle, imgUrl } = wine;
@@ -184,7 +194,6 @@ function ExploreWines({ db }) {
                       </div>
                     );
                   }
-                  return;
                 })}
             </div>
             {showControls && (
@@ -196,59 +205,52 @@ function ExploreWines({ db }) {
               </div>
             )}
           </div>
-          {Object.keys(cart).length &&
-          Object.values(cart).reduce((cur, sum) => sum + cur) ? (
-            <div
-              className={`${styles.cartInfoCard}  animate__animated animate__fadeInUp`}
-            >
-              <div
-                className={styles.cartCard}
-                style={{
-                  backgroundImage: `url(${bigBtn})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "contain",
-                  width: "602px",
-                  height: "109px",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "50px",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "42px",
-                      marginRight: "10px",
-                    }}
-                  >
-                    {Object.values(cart).reduce((cur, sum) => sum + cur)}
-                  </span>{" "}
-                  {Object.values(cart).reduce((cur, sum) => sum + cur) > 1
-                    ? "products "
-                    : "product "}
-                  added
-                </div>
-                <div
-                  className={styles.viewCartCard}
-                  style={{
-                    backgroundImage: `url(${btnBg})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "contain",
-                    width: "191px",
-                    height: "56px",
-                    cursor: "pointer",
-                  }}
-                >
-                  View Cart
-                </div>
-              </div>
-            </div>
-          ) : null}
         </div>
       </div>
+      {!isCartEmpty ? (
+        <div
+          className={`${styles.cartInfoCard}  animate__animated animate__flipInX`}
+        >
+          <div
+            className={styles.cartCard}
+            style={{
+              backgroundImage: `url(${bigBtn})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
+              width: "602px",
+              height: "109px",
+            }}
+          >
+            <div className={styles.cartBtnLeft}>
+              <div
+                style={{
+                  fontSize: "42px",
+                  marginRight: "10px",
+                }}
+              >
+                {Object.values(cart).reduce((cur, sum) => sum + cur)}
+              </div>{" "}
+              {Object.values(cart).reduce((cur, sum) => sum + cur) > 1
+                ? "products "
+                : "product "}
+              added
+            </div>
+            <div
+              className={styles.viewCartCard}
+              style={{
+                backgroundImage: `url(${btnBg})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "contain",
+                width: "191px",
+                height: "56px",
+                cursor: "pointer",
+              }}
+            >
+              View Cart
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

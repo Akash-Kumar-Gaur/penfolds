@@ -1,3 +1,30 @@
+.cartInfoCard {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 3%;
+  .cartCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    box-sizing: border-box;
+    .cartBtnLeft {
+      display: flex;
+      align-items: center;
+      margin-left: 50px;
+    }
+  }
+  .viewCartCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    margin-right: 14px;
+  }
+}
 .explore {
   margin-top: 134px;
   color: #fff;
@@ -34,29 +61,6 @@
     flex: 3.5;
     max-width: 75%;
     position: relative;
-
-    .cartInfoCard {
-      position: absolute;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      bottom: 30px;
-      .cartCard {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 24px;
-        box-sizing: border-box;
-      }
-      .viewCartCard {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-transform: uppercase;
-        margin-right: 14px;
-      }
-    }
     .header {
       font-weight: 700;
       font-size: 35.56px;
@@ -173,6 +177,100 @@
         display: none !important;
         -ms-overflow-style: none !important; /* IE and Edge */
         scrollbar-width: none !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .cartInfoCard {
+    .cartCard {
+      width: 295.91px !important;
+      height: 53.58px !important;
+      .cartBtnLeft {
+        font-size: 60% !important;
+        margin-left: 10px !important;
+        > div {
+          font-size: 24px !important;
+        }
+      }
+    }
+    .viewCartCard {
+      width: 93.88px !important;
+      height: 27.53px !important;
+      font-size: 11px !important;
+    }
+  }
+  .explore {
+    display: flex;
+    flex-direction: column;
+    margin-top: 93px !important;
+    .left {
+      > div {
+        margin-top: 0 !important;
+      }
+      &::after {
+        display: none !important;
+      }
+      ul {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8px;
+        li {
+          border: none !important;
+          margin: 0 !important;
+          padding: 6px !important;
+          font-size: 12px !important;
+        }
+      }
+    }
+    .right {
+      max-width: 100% !important;
+      .addBtn,
+      .addedToCart {
+        width: 102.29px !important;
+        height: 29.99px !important;
+        font-size: 10px !important;
+      }
+      .addedToCart {
+        font-size: 15px !important;
+      }
+      .header {
+        font-size: 20px !important;
+        padding: 6px 43px;
+      }
+      .controls {
+        display: none !important;
+      }
+      .winelist {
+        flex-wrap: wrap;
+        overflow-y: auto;
+        max-height: calc(100vh - 93px - 40px - 58px);
+        padding: 0 !important;
+        .cardWrapper {
+          width: calc(40%) !important;
+          margin: 0 5% !important;
+          margin-bottom: 25px !important;
+          .wineCard {
+            > div {
+              height: auto !important;
+            }
+            .wineImgMain {
+              width: 144px !important;
+              height: 160px !important;
+            }
+            .wineName,
+            .subtitle {
+              font-size: 12px !important;
+            }
+            .subtitle {
+              margin-top: 10px !important;
+            }
+            .infoWrapper {
+              min-height: 60px !important;
+            }
+          }
+        }
       }
     }
   }

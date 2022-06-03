@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeScene />} />
-        <Route path="explore" element={<ExploreWines db={db} />} />
+        <Route path="/explore" element={<ExploreWines db={db} />} />
       </Routes>
     </BrowserRouter>
   );

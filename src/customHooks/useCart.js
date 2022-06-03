@@ -35,10 +35,16 @@ function useCart() {
     setCart(cartObj);
   };
 
+  const isCartEmpty = !(
+    Object.keys(cart).length &&
+    Object.values(cart).reduce((cur, sum) => sum + cur)
+  );
+
   return {
     removeFromCart,
     addToCart,
     cart,
+    isCartEmpty,
   };
 }
 

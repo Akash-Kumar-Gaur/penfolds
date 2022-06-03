@@ -20,7 +20,7 @@ export const Header = () => {
         <Link to="/">
           <button className={styles.homeBtn}>Home</button>
         </Link>
-        <Link to="explore">
+        <Link to="/explore">
           <button
             className={styles.authBtn}
             style={{
