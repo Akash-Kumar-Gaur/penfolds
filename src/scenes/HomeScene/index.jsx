@@ -5,6 +5,38 @@ import mainBg from "../../assets/images/mainBg.png";
 import startBg from "../../assets/images/startBg.png";
 import btnBg from "../../assets/images/btnBg.png";
 import MyMenu from "./Menu";
+import { Link } from "react-router-dom";
+
+export const Header = () => {
+  return (
+    <div className={styles.navHeader}>
+      <div>
+        <img
+          src={require("../../assets/images/logo.png")}
+          className={styles.logoWeb}
+        />
+      </div>
+      <div className={styles.navLinks}>
+        <Link to="/">
+          <button className={styles.homeBtn}>Home</button>
+        </Link>
+        <Link to="explore">
+          <button
+            className={styles.authBtn}
+            style={{
+              backgroundImage: `url(${btnBg})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+          >
+            Register
+          </button>
+        </Link>
+        <MyMenu />
+      </div>
+    </div>
+  );
+};
 
 function HomeScene() {
   const [started, setStarted] = useState(false);
@@ -20,27 +52,7 @@ function HomeScene() {
       }}
       className={styles.homeWrapper}
     >
-      <div className={styles.navHeader}>
-        <div>
-          <img
-            src={require("../../assets/images/logo.png")}
-            className={styles.logoWeb}
-          />
-        </div>
-        <div className={styles.navLinks}>
-          <button
-            className={styles.authBtn}
-            style={{
-              backgroundImage: `url(${btnBg})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-            }}
-          >
-            Register
-          </button>
-          <MyMenu />
-        </div>
-      </div>
+      <Header />
       <div
         style={{
           fontSize: started ? "70px" : "120px",
