@@ -19,12 +19,14 @@ function App() {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomeScene />} />
-        <Route path="/explore" element={<ExploreWines db={db} />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomeScene />} />
+          <Route path="/explore" element={<ExploreWines db={db} />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

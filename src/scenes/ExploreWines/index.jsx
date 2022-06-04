@@ -3,13 +3,13 @@ import { Header } from "../HomeScene";
 import exploreBg from "../../assets/images/exploreBg.png";
 import btnLight from "../../assets/images/btnLight.png";
 import bigBtn from "../../assets/images/bigBtn.png";
-import btnBg from "../../assets/images/btnBg.png";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "./index.module.scss";
 import useCart from "../../customHooks/useCart";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import WineDetails from "./wineDetail";
+import ViewCart from "../../components/ViewCart";
 
 function ExploreWines({ db }) {
   const WINE_TYPES = [
@@ -26,8 +26,6 @@ function ExploreWines({ db }) {
     setLoading(true);
     const querySnapshot = await getDocs(collection(db, "wines"));
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
       wines.push(doc.data());
     });
     setWinesList(wines);
@@ -190,14 +188,14 @@ function ExploreWines({ db }) {
                           {cart[name] ? (
                             <div className={styles.addedToCart}>
                               <div
-                                className={styles.updateBtn}
+                                className={`${styles.updateBtn} ${styles.btnMinus}`}
                                 onClick={() => removeFromCart(name)}
                               >
                                 -
                               </div>
                               <div>{cart[name]}</div>
                               <div
-                                className={styles.updateBtn}
+                                className={`${styles.updateBtn} ${styles.btnPlus}`}
                                 onClick={() => addToCart(name)}
                               >
                                 +
@@ -263,19 +261,12 @@ function ExploreWines({ db }) {
                 : "product "}
               added
             </div>
-            <div
-              className={styles.viewCartCard}
-              style={{
-                backgroundImage: `url(${btnBg})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain",
-                width: "191px",
-                height: "56px",
-                cursor: "pointer",
-              }}
-            >
-              View Cart
-            </div>
+            <ViewCart
+              cart={cart}
+              winesList={winesList}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+            />
           </div>
         </div>
       ) : null}

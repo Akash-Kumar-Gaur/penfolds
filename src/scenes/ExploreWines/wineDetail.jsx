@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useCart from "../../customHooks/useCart";
 import styles from "./wineDetails.module.scss";
 import btnLight from "../../assets/images/btnLight.png";
 
@@ -62,13 +61,16 @@ function WineDetails({
           {cart[name] ? (
             <div className={styles.addedToCart}>
               <div
-                className={styles.updateBtn}
+                className={`${styles.updateBtn} ${styles.btnMinus}`}
                 onClick={() => removeFromCart(name)}
               >
                 -
               </div>
               <div>{cart[name]}</div>
-              <div className={styles.updateBtn} onClick={() => addToCart(name)}>
+              <div
+                className={`${styles.updateBtn} ${styles.btnPlus}`}
+                onClick={() => addToCart(name)}
+              >
                 +
               </div>
             </div>

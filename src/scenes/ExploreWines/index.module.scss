@@ -110,6 +110,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 10;
         .addBtn {
           display: flex;
           justify-content: center;
@@ -127,11 +128,17 @@
           .updateBtn {
             width: 30px;
             text-align: center;
-            margin: 0 20px;
+            // margin: 0 20px;
             cursor: pointer;
             user-select: none;
             font-weight: 400;
             font-size: 25px;
+          }
+          .btnMinus {
+            margin: 0 20px 0 0 !important;
+          }
+          .btnPlus {
+            margin: 0 0 0 20px !important;
           }
         }
       }

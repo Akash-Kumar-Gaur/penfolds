@@ -83,6 +83,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 10px;
       .addBtn {
         display: flex;
         justify-content: center;
@@ -105,6 +106,12 @@
           user-select: none;
           font-weight: 400;
           font-size: 25px;
+        }
+        .btnMinus {
+          margin: 0 20px 0 0 !important;
+        }
+        .btnPlus {
+          margin: 0 0 0 20px !important;
         }
       }
     }
@@ -139,7 +146,7 @@
     .detailsRight {
       margin-top: 30px;
       .details {
-        height: 300px;
+        height: 200px;
         overflow-y: auto;
         margin-bottom: 20px;
       }
@@ -156,10 +163,14 @@
       .data {
         font-size: 15px !important;
       }
-      .addBtn {
+      .addBtn,
+      .addedToCart {
         width: 103px !important;
         font-size: 10px !important;
         height: 30px !important;
+      }
+      .addedToCart {
+        font-size: 14px !important;
       }
     }
   }
