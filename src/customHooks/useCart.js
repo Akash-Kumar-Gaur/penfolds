@@ -1,7 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function useCart() {
   const [cart, setCart] = useState({});
+
+  useEffect(() => {
+    const cartStored = window.localStorage.getItem("userCart") || "";
+    if (cartStored.length) {
+      setCart(JSON.parse(cartStored));
+    }
+  });
 
   const addToCart = (item) => {
     let cartObj = {};
@@ -17,6 +24,7 @@ function useCart() {
       };
     }
     setCart(cartObj);
+    window.localStorage.setItem("userCart", JSON.stringify(cartObj));
   };
 
   const removeFromCart = (item) => {
@@ -33,6 +41,7 @@ function useCart() {
       };
     }
     setCart(cartObj);
+    window.localStorage.setItem("userCart", JSON.stringify(cartObj));
   };
 
   const isCartEmpty = !(
