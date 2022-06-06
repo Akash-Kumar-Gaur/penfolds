@@ -1,0 +1,143 @@
+.historyWrapper {
+  height: 100%;
+  //   align-items: center;
+  //   justify-content: center;
+  //   display: flex;
+  //   flex-direction: column;
+
+  .dataSection {
+    height: 100%;
+    width: 90%;
+    margin: 133px auto;
+  }
+
+  .historyCard {
+    background: rgba(6, 6, 6, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    // padding: 40px 0;
+
+    .left {
+      width: 35%;
+      position: relative;
+      min-height: 100%;
+      .activeHeader {
+        padding: 40px 50px 10px 50px;
+        font-size: 25.56px;
+        text-transform: uppercase;
+        color: #b12535;
+        max-width: 400px;
+      }
+      &::after {
+        content: "";
+        background-image: url("../../assets/images/vrule.png");
+        position: absolute;
+        height: 100%;
+        width: 100px;
+        background-repeat: no-repeat;
+        top: 0;
+        background-size: contain;
+        left: 80%;
+      }
+      .yearOption {
+        margin: 28px 0;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 25px;
+        padding-left: 50px;
+      }
+      .active {
+        font-weight: 700;
+        color: #ffffff;
+        position: relative;
+        &::before {
+          content: "";
+          background: #b12535;
+          position: absolute;
+          height: 100%;
+          left: 0;
+          width: 18px;
+        }
+      }
+    }
+    .right {
+      width: 65%;
+      padding: 40px;
+      position: relative;
+
+      .yearImg {
+        width: 631px;
+        height: 338px;
+      }
+      .imgLoader {
+        height: 338px;
+        width: 631px;
+        background: rgba(177, 37, 53, 0.25);
+      }
+      .content {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 26px;
+        color: #ffffff;
+        margin-top: 35px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .historyCard {
+    flex-direction: column;
+  }
+  .yearsWrapper {
+    display: flex;
+    overflow-x: auto;
+    width: 100% !important;
+    .yearOption {
+      font-weight: 300 !important;
+      font-size: 15px !important;
+      white-space: nowrap;
+      padding-left: 20px !important;
+      margin: 14px 0 !important;
+    }
+  }
+  .left {
+    width: 100% !important;
+    &::after {
+      display: none !important;
+    }
+    .activeHeader {
+      width: 100%;
+      padding: 20px !important;
+    }
+    .active {
+      padding-bottom: 20px;
+      &::before {
+        bottom: 0 !important;
+        width: 65% !important;
+        height: 5px !important;
+        left: auto !important;
+      }
+    }
+  }
+  .right {
+    padding: 20px 40px !important;
+    width: 100% !important;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .yearImg,
+  .imgLoader {
+    width: 100% !important;
+    height: 161.04px !important;
+  }
+  .content {
+    font-weight: 400 !important;
+    font-size: 15px !important;
+    line-height: 20px !important;
+  }
+}

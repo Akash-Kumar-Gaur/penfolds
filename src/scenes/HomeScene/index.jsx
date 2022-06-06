@@ -11,10 +11,12 @@ export const Header = () => {
   return (
     <div className={styles.navHeader}>
       <div>
-        <img
-          src={require("../../assets/images/logo.png")}
-          className={styles.logoWeb}
-        />
+        <Link to="/">
+          <img
+            src={require("../../assets/images/logo.png")}
+            className={styles.logoWeb}
+          />
+        </Link>
       </div>
       <div className={styles.navLinks}>
         <Link to="/">
@@ -73,11 +75,13 @@ function HomeScene() {
         <div
           className={`${styles.bannerInfo} ${styles.actionBtnWrapper} animate__animated animate__bounceInUp animate__delay-1s`}
         >
-          <div
-            className={`${styles.actionBtn} ${styles.optionBtn} animate__animated animate__fadeIn animate__delay-1s`}
-          >
-            <div className={styles.btnText}>Penfolds history</div>
-          </div>
+          <Link to="/history">
+            <div
+              className={`${styles.actionBtn} ${styles.optionBtn} animate__animated animate__fadeIn animate__delay-1s`}
+            >
+              <div className={styles.btnText}>Penfolds history</div>
+            </div>
+          </Link>
           <div
             className={`${styles.actionBtn} ${styles.optionBtn} animate__animated animate__fadeIn animate__delay-1s`}
           >

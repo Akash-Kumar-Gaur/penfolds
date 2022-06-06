@@ -5,6 +5,7 @@ import ExploreWines from "./scenes/ExploreWines";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
 import "./App.css";
+import PenfoldsHistory from "./scenes/PenfoldsHistory";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCiOLB5Df8mvf43x-A159cCGAyqu8m5oPk",
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScene />} />
           <Route path="/explore" element={<ExploreWines db={db} />} />
+          <Route path="/history" element={<PenfoldsHistory db={db} />} />
         </Routes>
       </BrowserRouter>
     </>
