@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
-import cardBg from "../../assets/images/cardBg.png";
 import exploreBg from "../../assets/images/exploreBg.png";
 import { collection, getDocs } from "firebase/firestore";
 import { Header } from "../HomeScene";
@@ -41,7 +40,6 @@ function PenfoldsHistory({ db }) {
         color: "#fff",
         position: "relative",
         overflowY: "hidden",
-        maxHeight: innerHeight,
         minHeight: innerHeight,
       }}
     >
@@ -52,14 +50,22 @@ function PenfoldsHistory({ db }) {
             <div className={styles.activeHeader}>
               {activeYear.year} TO EVERMORE!
             </div>
-            <div className={styles.yearsWrapper}>
+            <div className={styles.yearsWrapper} id="yearEntry">
               {historyData.map((entry, index) => {
                 return (
                   <div
+                    id={"yearTab"}
                     key={index}
                     onClick={() => {
                       setImgLoaded(false);
                       setActiveYear(entry);
+                      if (document.getElementById("yearEntry")) {
+                        const clientWidth =
+                          document.getElementById("yearTab").clientWidth;
+                        document
+                          .getElementById("yearEntry")
+                          .scrollTo(index * clientWidth - 20, 0);
+                      }
                     }}
                     className={`${styles.yearOption} ${
                       entry.year === activeYear.year && styles.active

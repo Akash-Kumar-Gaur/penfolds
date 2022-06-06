@@ -1,0 +1,174 @@
+.historyWrapper {
+  .notesWrapper {
+    height: calc(90vh - 190px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 190px;
+    .container {
+      position: relative;
+      background-image: url("../../assets/images/cardBg.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      //   background: rgba(0, 0, 0, 0.8);
+      //   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      //   backdrop-filter: blur(2.5px);
+      //   -webkit-backdrop-filter: blur(2.5px);
+      //   border-radius: 10px;
+      //   border: 1px solid rgba(255, 255, 255, 0.18);
+      //   height: 100%;
+      //   width: 70%;
+      aspect-ratio: 1405/822;
+      height: calc(882px - 150px);
+    }
+    .introCard {
+      background-image: url("../../assets/images/greyBg.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: relative;
+      padding: 20px 45px;
+      box-sizing: border-box;
+      left: 110px;
+      top: -56px;
+      aspect-ratio: 563/338;
+      max-height: 338px;
+      //   background: rgba(68, 68, 68, 0.75);
+      //   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      //   backdrop-filter: blur(4px);
+      //   -webkit-backdrop-filter: blur(4px);
+      //   border-radius: 10px;
+      //   border: 1px solid rgba(255, 255, 255, 0.18);
+      h3 {
+        font-weight: 400;
+        font-size: 22.1px;
+        line-height: 29px;
+      }
+      .cardHeader {
+        font-weight: 700;
+        font-size: 25.56px;
+        line-height: 33px;
+        text-transform: uppercase;
+        color: #b12535;
+      }
+    }
+    .collectionWrapper {
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      .card {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 20px;
+        position: relative;
+      }
+      .collectionCard {
+        background: rgba(177, 37, 53, 1);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(5.5px);
+        -webkit-backdrop-filter: blur(5.5px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        // background-image: url("../../assets/images/redCardBg.png");
+        // background-size: contain;
+        // background-repeat: no-repeat;
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        cursor: pointer;
+        transition: all 0.2s ease-in;
+
+        .wineImg {
+          top: -30px;
+          position: relative;
+          transition: all 0.2s ease-in;
+        }
+        .drinkName {
+          font-weight: 600;
+          font-size: 20.099px;
+        }
+        &:hover {
+          border: 1px solid #fff !important;
+          .wineImg {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .historyWrapper {
+    .notesWrapper {
+      width: 90%;
+      margin: 210px auto;
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto !important;
+        background-image: url("../../assets/images/cardBgMob.png");
+        aspect-ratio: 344/665;
+        .introCard {
+          width: 97%;
+          max-height: 251px !important;
+          left: 0 !important;
+          padding: 15px 20px 15px 30px !important;
+          .cardHeader {
+            font-weight: 700;
+            font-size: 19.3692px !important;
+          }
+          h3 {
+            font-weight: 400;
+            font-size: 14.0283px !important;
+            line-height: 18px !important;
+          }
+        }
+        .collectionWrapper {
+          flex-direction: column;
+          width: 100% !important;
+          .card {
+            margin: 20px !important;
+            box-sizing: border-box;
+          }
+          .collectionCard {
+            background-image: url("../../assets/images/hybridBg.png");
+            background-color: transparent !important;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            flex-direction: row !important;
+            justify-content: flex-start !important;
+            padding-right: 20px;
+            box-sizing: border-box;
+            .wineImg {
+              max-height: 75px;
+              margin-right: 50px;
+              margin-left: 15px;
+              top: 0 !important;
+            }
+            .drinkName {
+              font-weight: 600;
+              font-size: 18.05px !important;
+            }
+            &:hover {
+              border: none !important;
+              .wineImg {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

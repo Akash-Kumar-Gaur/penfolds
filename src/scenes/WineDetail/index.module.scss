@@ -1,0 +1,160 @@
+.detailContainer {
+  //   padding-bottom: 50px;
+  .cartBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    margin-top: 20px;
+    .addBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      user-select: none;
+    }
+    .addedToCart {
+      display: flex;
+      height: 56px;
+      align-items: center;
+      user-select: none;
+
+      .updateBtn {
+        width: 30px;
+        text-align: center;
+        // margin: 0 20px;
+        cursor: pointer;
+        user-select: none;
+        font-weight: 400;
+        font-size: 25px;
+      }
+      .btnMinus {
+        margin: 0 20px 0 0 !important;
+      }
+      .btnPlus {
+        margin: 0 0 0 20px !important;
+      }
+    }
+  }
+  .detailWrapper {
+    // height: calc(100vh - 133px);
+    width: 80%;
+    margin: 133px auto 0 auto;
+    .detailCard {
+      padding: 20px 90px;
+      //   background-image: url("../../assets/images/cardBg.png");
+      //   background-repeat: no-repeat;
+      //   background-size: contain;
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(2.5px);
+      -webkit-backdrop-filter: blur(2.5px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      //   height: calc(100vh - 133px);
+      > a {
+        text-decoration: none;
+      }
+      .backBtn {
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
+        font-size: 22.1px;
+      }
+      .details {
+        display: flex;
+        .left {
+          width: 55%;
+          h2 {
+            font-size: 33.5px;
+            color: #b12535;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-top: 5px;
+          }
+          h3 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 5px;
+          }
+          .pointsContainer {
+            display: flex;
+            .point {
+              margin-right: 45px;
+              font-weight: 300;
+              font-size: 20px;
+              color: #ffffff;
+              opacity: 0.5;
+              text-transform: uppercase;
+              cursor: pointer;
+            }
+            .active {
+              opacity: 1;
+              font-weight: 700;
+              border-bottom: 3px solid #b12535;
+              padding-bottom: 5px;
+            }
+          }
+          .tabData {
+            margin-top: 20px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 26px;
+            color: rgba(255, 255, 255, 0.6);
+            overflow-y: auto;
+            .tabPoint {
+              margin-bottom: 20px;
+            }
+          }
+        }
+        .imgWrapper {
+          width: 45%;
+          > img {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .detailCard {
+    // background-image: url("../../assets/images/detailBg.png") !important;
+    padding: 15px !important;
+    .details {
+      flex-direction: column;
+      .left {
+        order: 2;
+        width: 100% !important;
+      }
+      .imgWrapper {
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > img {
+          width: 50% !important;
+        }
+      }
+    }
+    .backBtn {
+      font-size: 15.279px !important;
+      position: relative;
+      top: -50px;
+    }
+    .point {
+      font-weight: 300;
+      font-size: 12px !important;
+      margin-right: 37px !important;
+    }
+    .tabData {
+      font-weight: 400;
+      font-size: 15px !important;
+      max-height: 120px;
+      .tabPoint {
+        margin-bottom: 5px !important;
+      }
+    }
+  }
+}

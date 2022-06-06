@@ -22,7 +22,7 @@ export const Header = () => {
         <Link to="/">
           <button className={styles.homeBtn}>Home</button>
         </Link>
-        <Link to="/explore">
+        <Link to="/">
           <button
             className={styles.authBtn}
             style={{
@@ -35,6 +35,14 @@ export const Header = () => {
           </button>
         </Link>
         <MyMenu />
+        <div id="menu" className={styles.dropdown}>
+          <Link to="/taste" className={styles.menuLink}>
+            Taste of Mirazur
+          </Link>
+          <Link to="/explore" className={styles.menuLink}>
+            Explore our wines
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -75,17 +83,19 @@ function HomeScene() {
         <div
           className={`${styles.bannerInfo} ${styles.actionBtnWrapper} animate__animated animate__bounceInUp animate__delay-1s`}
         >
-          <Link to="/history">
-            <div
-              className={`${styles.actionBtn} ${styles.optionBtn} animate__animated animate__fadeIn animate__delay-1s`}
-            >
-              <div className={styles.btnText}>Penfolds history</div>
-            </div>
-          </Link>
           <div
             className={`${styles.actionBtn} ${styles.optionBtn} animate__animated animate__fadeIn animate__delay-1s`}
           >
-            <div className={styles.btnText}>Tasting Notes</div>
+            <Link to="/history">
+              <div className={styles.btnText}>Penfolds history</div>
+            </Link>
+          </div>
+          <div
+            className={`${styles.actionBtn} ${styles.optionBtn} animate__animated animate__fadeIn animate__delay-1s`}
+          >
+            <Link to="/notes">
+              <div className={styles.btnText}>Tasting Notes</div>
+            </Link>
           </div>
         </div>
       ) : (

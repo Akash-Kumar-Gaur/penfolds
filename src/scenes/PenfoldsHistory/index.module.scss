@@ -1,9 +1,5 @@
 .historyWrapper {
   height: 100%;
-  //   align-items: center;
-  //   justify-content: center;
-  //   display: flex;
-  //   flex-direction: column;
 
   .dataSection {
     height: 100%;
@@ -97,6 +93,11 @@
     display: flex;
     overflow-x: auto;
     width: 100% !important;
+    padding-right: 20px;
+    box-sizing: border-box;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .yearOption {
       font-weight: 300 !important;
       font-size: 15px !important;

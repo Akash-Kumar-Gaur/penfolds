@@ -37,6 +37,22 @@
       cursor: pointer;
     }
   }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    padding: 133px 50px 133px 150px;
+    align-items: flex-end;
+    box-sizing: border-box;
+    .menuLink {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20.099px;
+      line-height: 26px;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin: 20px 0;
+    }
+  }
 }
 @media only screen and (max-width: 600px) {
   .navHeader {
@@ -64,6 +80,10 @@
 }
 .actionBtn {
   cursor: pointer;
+  > a {
+    text-decoration: none;
+    color: #fff;
+  }
 }
 .actionBtnWrapper {
   display: flex;

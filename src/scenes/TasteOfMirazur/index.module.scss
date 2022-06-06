@@ -1,0 +1,199 @@
+.tasteMirazur {
+  display: flex;
+  width: 100%;
+  margin: 134px auto;
+  height: 100vh;
+  flex-direction: column;
+
+  .contentWrapper {
+    display: flex;
+  }
+  .left {
+    width: 20%;
+    position: relative;
+    height: 100%;
+    margin-right: 100px;
+    &::after {
+      content: "";
+      background-image: url("../../assets/images/vrule.png");
+      position: absolute;
+      height: 100%;
+      width: 100px;
+      background-repeat: no-repeat;
+      top: 0;
+      background-size: contain;
+      left: 80%;
+    }
+    .tab {
+      font-weight: 300;
+      font-size: 22.1px;
+      opacity: 0.8;
+      text-transform: capitalize;
+      //   padding-right: 30px;
+      margin: 40px 30px;
+      cursor: pointer;
+    }
+    .activeTab {
+      font-weight: 700;
+      opacity: 1;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 10px;
+        background: #b12535;
+        left: 0;
+      }
+    }
+  }
+  .heading {
+    font-weight: 700;
+    font-size: 35.56px;
+    line-height: 46px;
+    text-transform: uppercase;
+    color: #b12535;
+    margin-left: 25%;
+  }
+  .right {
+    width: 80%;
+    .twoSidedContent {
+      margin-top: 30px;
+      padding-right: 200px;
+      display: flex;
+      .imgContainer {
+        margin-right: 38px;
+      }
+      h2,
+      h3 {
+        margin: 0;
+      }
+      h2 {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 32px;
+        text-transform: uppercase;
+        color: #ffffff;
+      }
+      h3 {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 26px;
+        text-transform: uppercase;
+        margin: 10px 0;
+      }
+      .points {
+        font-weight: 300;
+        font-size: 22.1px;
+        line-height: 29px;
+        margin-top: 25px;
+
+        .pointData {
+          margin-bottom: 25px;
+        }
+      }
+      .pointHeader {
+        font-weight: 700;
+        font-weight: 700;
+        font-size: 22.1px;
+        line-height: 29px;
+        color: #ffffff;
+      }
+      .chefImgMob {
+        display: none;
+      }
+      .chefInfo {
+        display: flex;
+      }
+    }
+  }
+  .ratingMob {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .heading {
+    font-weight: 700;
+    font-size: 20px !important;
+    line-height: 26px;
+    margin-left: 30px !important;
+  }
+  .twoSidedContent {
+    margin-top: 20px !important;
+    padding-right: 0 !important;
+    padding: 0 30px 0 30px !important;
+    flex-direction: column;
+  }
+  .right {
+    width: 100% !important;
+  }
+  .imgContainer {
+    margin-right: 0 !important;
+  }
+  .contentWrapper {
+    flex-direction: column;
+    .left {
+      width: 100% !important;
+      height: auto !important;
+      display: flex;
+      &::after {
+        display: none;
+      }
+      .tab {
+        padding-left: 30px !important;
+        font-weight: 300 !important;
+        font-size: 12px !important;
+        margin: 12px 0 !important;
+      }
+      .activeTab {
+        position: relative;
+        padding-bottom: 20px;
+        font-weight: 700 !important;
+        &::before {
+          height: 5px !important;
+          width: 60%;
+          left: auto !important;
+          bottom: 0 !important;
+        }
+      }
+    }
+  }
+  .chefImgMob {
+    display: block !important;
+    max-width: 124px;
+    object-fit: contain;
+    margin-right: 20px;
+  }
+  .chefImg {
+    display: none;
+  }
+  .points {
+    font-weight: 300 !important;
+    font-size: 15px !important;
+    line-height: 20px !important;
+    .pointData {
+      margin-bottom: 15px !important;
+    }
+  }
+  h2 {
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    line-height: normal !important;
+  }
+  h3 {
+    font-weight: 400 !important;
+    font-size: 15px !important;
+    margin: 5px 0 !important;
+  }
+  .ratingMob {
+    display: block !important;
+  }
+  .rating {
+    display: none;
+  }
+  .infoImg {
+    max-width: 50%;
+    height: 50% !important;
+  }
+}
