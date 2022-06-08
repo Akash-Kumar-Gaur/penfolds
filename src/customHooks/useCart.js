@@ -61,7 +61,10 @@ function useCart() {
 
   const placeOrder = async ({ successCallback = () => {} }) => {
     const newToken = token();
-    await setDoc(doc(db, "orders", newToken), cart).then(() => {
+    await setDoc(doc(db, "orders", newToken), {
+      cart,
+      placedOn: new Date(),
+    }).then(() => {
       window.localStorage.removeItem("userCart");
       successCallback(newToken);
     });
