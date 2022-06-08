@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Header } from "../HomeScene";
 import exploreBg from "../../assets/images/exploreBg.png";
 import btnLight from "../../assets/images/btnLight.png";
@@ -11,6 +11,54 @@ import "reactjs-popup/dist/index.css";
 import WineDetails from "./wineDetail";
 import ViewCart from "../../components/ViewCart";
 
+export const CartView = ({
+  isCartEmpty,
+  cart,
+  winesList,
+  addToCart,
+  removeFromCart,
+  placeOrder,
+}) => {
+  return !isCartEmpty ? (
+    <div
+      className={`${styles.cartInfoCard}  animate__animated animate__flipInX`}
+    >
+      <div
+        className={styles.cartCard}
+        style={{
+          backgroundImage: `url(${bigBtn})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          width: "602px",
+          height: "109px",
+        }}
+      >
+        <div className={styles.cartBtnLeft}>
+          <div
+            style={{
+              fontSize: "42px",
+              marginRight: "10px",
+            }}
+          >
+            {Object.values(cart).reduce((cur, sum) => sum + cur)}
+          </div>{" "}
+          {Object.values(cart).reduce((cur, sum) => sum + cur) > 1
+            ? "products "
+            : "product "}
+          added
+        </div>
+        <ViewCart
+          cart={cart}
+          winesList={winesList}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          placeOrder={placeOrder}
+        />
+      </div>
+    </div>
+  ) : null;
+};
+
 function ExploreWines({ db }) {
   const WINE_TYPES = [
     "THEMATIC",
@@ -21,7 +69,7 @@ function ExploreWines({ db }) {
   const [activeType, setActiveType] = useState(WINE_TYPES[0]);
   const [winesList, setWinesList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const fetchWines = async () => {
+  const fetchWines = useCallback(async () => {
     let wines = [];
     setLoading(true);
     const querySnapshot = await getDocs(collection(db, "wines"));
@@ -30,10 +78,11 @@ function ExploreWines({ db }) {
     });
     setWinesList(wines);
     setLoading(false);
-  };
+  }, [db]);
+
   useEffect(() => {
     fetchWines();
-  }, [db]);
+  }, [fetchWines]);
 
   const settings = {
     dots: true,
@@ -56,7 +105,8 @@ function ExploreWines({ db }) {
   const showControls =
     winesList.filter((wine) => wine.type.includes(activeType)).length > 4;
 
-  const { addToCart, cart, removeFromCart, isCartEmpty } = useCart();
+  const { addToCart, cart, removeFromCart, isCartEmpty, placeOrder } =
+    useCart();
 
   const innerHeight = window.innerHeight;
 
@@ -233,43 +283,14 @@ function ExploreWines({ db }) {
           </div>
         </div>
       </div>
-      {!isCartEmpty ? (
-        <div
-          className={`${styles.cartInfoCard}  animate__animated animate__flipInX`}
-        >
-          <div
-            className={styles.cartCard}
-            style={{
-              backgroundImage: `url(${bigBtn})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-              width: "602px",
-              height: "109px",
-            }}
-          >
-            <div className={styles.cartBtnLeft}>
-              <div
-                style={{
-                  fontSize: "42px",
-                  marginRight: "10px",
-                }}
-              >
-                {Object.values(cart).reduce((cur, sum) => sum + cur)}
-              </div>{" "}
-              {Object.values(cart).reduce((cur, sum) => sum + cur) > 1
-                ? "products "
-                : "product "}
-              added
-            </div>
-            <ViewCart
-              cart={cart}
-              winesList={winesList}
-              addToCart={addToCart}
-              removeFromCart={removeFromCart}
-            />
-          </div>
-        </div>
-      ) : null}
+      <CartView
+        cart={cart}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+        winesList={winesList}
+        isCartEmpty={isCartEmpty}
+        placeOrder={placeOrder}
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import exploreBg from "../../assets/images/exploreBg.png";
 import { collection, getDocs } from "firebase/firestore";
@@ -9,7 +9,7 @@ function PenfoldsHistory({ db }) {
   const [activeYear, setActiveYear] = useState({});
   const [loading, setLoading] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
-  const fetchHistory = async () => {
+  const fetchHistory = useCallback(async () => {
     let history = [];
     setLoading(true);
     const querySnapshot = await getDocs(collection(db, "history"));
@@ -20,11 +20,11 @@ function PenfoldsHistory({ db }) {
     setHistoryData(sortedData);
     setLoading(false);
     setActiveYear(sortedData[0]);
-  };
+  }, [db]);
 
   useEffect(() => {
     fetchHistory();
-  }, [db]);
+  }, [fetchHistory]);
 
   const innerHeight = window.innerHeight;
 

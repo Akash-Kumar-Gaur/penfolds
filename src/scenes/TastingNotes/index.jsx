@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import { collection, getDocs } from "firebase/firestore";
 import startBg from "../../assets/images/startBg.png";
@@ -12,7 +12,7 @@ function TastingNotes({ db }) {
   const [imgLoaded, setImageLoaded] = useState(false);
   let navigate = useNavigate();
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     let fetchedData = [];
     setLoading(true);
     const querySnapshot = await getDocs(collection(db, "tastingNotes"));
@@ -21,11 +21,11 @@ function TastingNotes({ db }) {
     });
     setData(fetchedData[0]);
     setLoading(false);
-  };
+  }, [db]);
 
   useEffect(() => {
     fetchData();
-  }, [db]);
+  }, [fetchData]);
 
   const innerHeight = window.innerHeight;
   const { intro = "", collection: wineCollection = [] } = data || {};

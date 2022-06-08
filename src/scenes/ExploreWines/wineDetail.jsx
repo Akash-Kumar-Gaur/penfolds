@@ -39,8 +39,12 @@ function WineDetails({
         <div className={styles.thumbImages}>
           {images.slice(0, 3).map((image, key) => {
             return (
-              <div className={styles.thumb} onClick={() => updateImage(image)}>
-                <img key={key} src={image} alt={image} />
+              <div
+                key={key}
+                className={styles.thumb}
+                onClick={() => updateImage(image)}
+              >
+                <img src={image} alt={image} />
               </div>
             );
           })}

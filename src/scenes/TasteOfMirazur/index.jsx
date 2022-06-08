@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Header } from "../HomeScene";
 import styles from "./index.module.scss";
 import exploreBg from "../../assets/images/exploreBg.png";
@@ -11,7 +11,7 @@ function TasteOfMirazur({ db }) {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(TABS[0]);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     let fetchedData = [];
     setLoading(true);
     const querySnapshot = await getDocs(collection(db, "tasteOfMirazur"));
@@ -20,11 +20,11 @@ function TasteOfMirazur({ db }) {
     });
     setData(fetchedData[0]);
     setLoading(false);
-  };
+  }, [db]);
 
   useEffect(() => {
     fetchData();
-  }, [db]);
+  }, [fetchData]);
 
   const getTabContent = () => {
     const dataToMap = data[activeTab] || {};

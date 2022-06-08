@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import startBg from "../../assets/images/startBg.png";
 import { Header } from "../HomeScene";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import useCart from "../../customHooks/useCart";
 import btnLight from "../../assets/images/btnLight.png";
+import ViewCart from "../../components/ViewCart";
+import { collection, getDocs } from "firebase/firestore";
 
-function WineDetail() {
+function WineDetail({ db }) {
   const innerHeight = window.innerHeight;
   const { state } = useLocation();
   const { details = {} } = state;
@@ -15,8 +17,24 @@ function WineDetail() {
 
   const POINTS = ["colour", "nose", "palate"];
   const [activeTab, setActiveTab] = useState(POINTS[0]);
+  const [winesList, setWinesList] = useState([]);
 
-  const { addToCart, cart, removeFromCart, isCartEmpty } = useCart();
+  const { addToCart, cart, removeFromCart, isCartEmpty, placeOrder } =
+    useCart();
+
+  const fetchWines = useCallback(async () => {
+    let wines = [];
+    const querySnapshot = await getDocs(collection(db, "wines"));
+    querySnapshot.forEach((doc) => {
+      wines.push(doc.data());
+    });
+    setWinesList(wines);
+  }, [db]);
+
+  useEffect(() => {
+    fetchWines();
+  }, [fetchWines]);
+
   return (
     <div
       className={styles.detailContainer}
@@ -59,7 +77,7 @@ function WineDetail() {
                 })}
               </div>
               <div className={styles.tabData}>
-                {details[activeTab].map((item, index) => {
+                {details[activeTab]?.map((item, index) => {
                   return (
                     <div key={index} className={styles.tabPoint}>
                       {item}
@@ -90,6 +108,14 @@ function WineDetail() {
             >
               +
             </div>
+            <ViewCart
+              cart={cart}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              isCartEmpty={isCartEmpty}
+              winesList={winesList}
+              placeOrder={placeOrder}
+            />
           </div>
         ) : (
           <div
