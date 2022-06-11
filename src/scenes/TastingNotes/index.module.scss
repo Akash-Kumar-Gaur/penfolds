@@ -109,7 +109,8 @@
   .historyWrapper {
     .notesWrapper {
       width: 90%;
-      margin: 210px auto;
+      margin: 133px auto 50px auto;
+      height: auto !important;
       .container {
         display: flex;
         flex-direction: column;
@@ -136,6 +137,8 @@
         .collectionWrapper {
           flex-direction: column;
           width: 100% !important;
+          overflow-y: auto;
+          height: 405px;
           .card {
             margin: 20px !important;
             box-sizing: border-box;
